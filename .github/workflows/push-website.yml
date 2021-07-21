@@ -2,6 +2,7 @@
 name: Push website
 
 "on":
+  workflow_dispatch:
   push:
     paths:
       - 'source/**'

@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 set -x
 
-mkdir -p build/images build/css
+mkdir -p build/images build/css build/files
 
 cp source/*.html build
 cp source/*.xml build
 cp source/.htaccess build
-cp source/robots.txt build
-#cp source/images/*.ico build
 cp source/css/* build/css
+cp source/files/* build/files
 cp source/images/*.png build/images
+cp source/images/*.svg build/images
+cp source/robots.txt build
 
 # optimize png files
 
 for filename in build/images/*.png; do
-  if [[ $(basename $filename) == "logo-betacloud.png" ]]; then
+  if [[ $(basename $filename) == "logo-betacloud-png" ]]; then
     mogrify \
       -depth 24 \
       -define png:compression-filter=2 \
@@ -35,7 +36,7 @@ done
 # optimize html files
 
 for filename in build/*.html; do
-  html-minifier \
+  ./node_modules/.bin/html-minifier \
     --collapse-whitespace \
     --remove-comments \
     --remove-redundant-attributes \
@@ -50,5 +51,5 @@ done
 # optimize css files
 
 for filename in build/css/*.css; do
-  cleancss -o $filename $filename
+  ./node_modules/.bin/cleancss -o $filename $filename
 done
