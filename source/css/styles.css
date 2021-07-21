@@ -52,12 +52,6 @@ body {
   padding: 7px;
 }
 
-.logo-betacloud-solutions {
-  width: auto;
-  height: 40px;
-  padding: 5px;
-}
-
 a:hover {
   color: rgb(182,88,130) !important;
 }
