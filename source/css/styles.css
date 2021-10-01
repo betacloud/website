@@ -46,6 +46,11 @@ body {
   padding-bottom: 20px;
 }
 
+.logo-openstack-powered {
+  width: 100%;
+  height: auto;
+}
+
 .logo-betacloud {
   width: 20%;
   height: auto;
